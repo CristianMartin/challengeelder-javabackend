@@ -4,25 +4,21 @@ import java.time.LocalDate;
 
 public abstract class CreditCard {
 	
-	private String brand;
+	protected String brand;
 	
-	private int number;
+	protected int number;
 	
-	private String name;
+	protected String cardHolder;
 	
-	private String surname;
+	protected LocalDate dueDate;
 	
-	private LocalDate dueDate;
+	protected double consumption;
 	
-	private Double consumption;
-	
-	
-	public CreditCard(String brand, int number, String name, String surname,
-			LocalDate dueDate, Double consumption) {
+	public CreditCard(String brand, int number, String cardHolder,
+			LocalDate dueDate, double consumption) {
 		this.brand = brand;
 		this.number = number;
-		this.name = name;
-		this.surname = surname;
+		this.cardHolder = cardHolder;
 		this.dueDate = dueDate;
 		this.consumption = consumption;
 	}
@@ -36,24 +32,16 @@ public abstract class CreditCard {
 
 	public void setNumber(int number) {	this.number = number; }
 
-	public String getName() { return name; }
-
-	public void setName(String name) { this.name = name; }
-
-	public String getSurname() { return surname; }
-
-	public void setSurname(String surname) { this.surname = surname; }
-
 	public LocalDate getDueDate() { return dueDate; }
 
 	public void setDueDate(LocalDate dueDate) {	this.dueDate = dueDate; }
 
-	public Double getConsumption() { return consumption; }
+	public double getConsumption() { return consumption; }
 
-	public void setConsumption(Double consumption) { this.consumption = consumption; }
+	public void setConsumption(double consumption) { this.consumption = consumption; }
 	
-	public String getCardHolder() { return this.name + "" + this.surname; }
+	public String getCardHolder() { return this.cardHolder; }
 	
-	public abstract Double getRate(LocalDate currentDate);
+	public abstract double getRate(LocalDate currentDate);
 
 }
