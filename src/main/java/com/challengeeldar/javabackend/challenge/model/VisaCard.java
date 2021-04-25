@@ -10,12 +10,6 @@ public class VisaCard extends CreditCard{
 
 	@Override
 	public double getRate(LocalDate currentDate) {
-		double rate = currentDate.getYear() / currentDate.getMonthValue();
-		if( rate < 0.3) {
-			rate = 0.3;
-		} else if(rate > 5.0){
-			rate = 5.0;
-		} 
-		return rate;		
+		return currentDate.getYear() / currentDate.getMonthValue();
 	}
 }

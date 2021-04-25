@@ -10,12 +10,6 @@ public class AmexCard extends CreditCard {
 
 	@Override
 	public double getRate(LocalDate currentDate) {
-		double rate = currentDate.getMonthValue() * 0.1;
-		if( rate < 0.3) {
-			rate = 0.3;
-		} else if(rate > 5.0){
-			rate = 5.0;
-		} 
-		return rate;
+		return currentDate.getMonthValue() * 0.1;
 	}
 }

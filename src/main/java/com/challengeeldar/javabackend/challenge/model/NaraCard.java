@@ -10,12 +10,6 @@ public class NaraCard extends CreditCard {
 
 	@Override
 	public double getRate(LocalDate currentDate) {
-		double rate = currentDate.getDayOfMonth() * 0.5;
-		if( rate < 0.3) {
-			rate = 0.3;
-		} else if(rate > 5.0){
-			rate = 5.0;
-		}
-		return rate;
+		return currentDate.getDayOfMonth() * 0.5;
 	}
 }

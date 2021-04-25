@@ -6,7 +6,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.challengeeldar.javabackend.challenge.model.AmexCard;
 import com.challengeeldar.javabackend.challenge.model.CreditCard;
 import com.challengeeldar.javabackend.challenge.model.NaraCard;
 import com.challengeeldar.javabackend.challenge.model.Operation;
@@ -15,13 +14,9 @@ import com.challengeeldar.javabackend.challenge.model.VisaCard;
 @SpringBootApplication
 public class ChallengeApplication implements CommandLineRunner {
 	
-	CreditCard visaCard;
+	CreditCard card1;
 	
-	CreditCard naraCard;
-	
-	CreditCard amexCard;
-	
-	CreditCard amexCard1;
+	CreditCard card2;
 	
 	Operation operation;
 	
@@ -30,31 +25,26 @@ public class ChallengeApplication implements CommandLineRunner {
 	}
 	
 	@Override
-	public void run(String... props) {
-		this.visaCard = new VisaCard(123456789, "Cristian Aranguren", LocalDate.of(2022, 12, 22), 0.0);
+	public void run(String... props) throws Exception {
+		this.card1 = new VisaCard(123456789, "Cristian Aranguren", LocalDate.of(2022, 12, 22), 0.0);
 		
-		this.naraCard = new NaraCard(123451234, "Cristian Aranguren", LocalDate.of(2022, 05, 12), 0.0);
+		this.card2 = new NaraCard(123451234, "Cristian Aranguren", LocalDate.of(2022, 05, 12), 0.0);
+			
+		this.operation = Operation.builder().withCreditCard(card1).withConsumption(500).build();
 		
-		this.amexCard = new AmexCard(123456712, "Cristian Aranguren", LocalDate.of(2021, 03, 02), 0.0);
+		System.out.println(this.infoCard(card1));
 		
-		this.amexCard1 = new AmexCard(123456712, "Cristian Aranguren", LocalDate.of(2021, 03, 04), 0.0);
+		System.out.println("\nEs una operacion valida?: " + this.isValidOperation(operation));
 		
-		this.operation = new Operation();
+		System.out.println("\nEs una tarjeta valida para operar?: " + this.isValidCard(card2));
 		
-		System.out.println(this.infoCard(visaCard));
+		System.out.println("\nEs una tarjeta valida para operar?: " + this.isValidCard(card1));
 		
-		this.operation.setConsumption(500);
-		System.out.println("Es una operacion valida?: " + this.isValidOperation(operation));
+		System.out.println("\nSon tarjetas distintas?: " + this.areDifferentCards(card1, card2));
 		
-		System.out.println("Es una tarjeta valida para operar?: " + this.isValidCard(naraCard));
+		System.out.println("\nSon tarjetas distintas?: " + this.areDifferentCards(card2, card2));
 		
-		System.out.println("Es una tarjeta valida para operar?: " + this.isValidCard(amexCard));
-		
-		System.out.println("Son tarjetas distintas?: " + this.areDifferentCards(amexCard, amexCard1));
-		
-		System.out.println("Son tarjetas distintas?: " + this.areDifferentCards(amexCard, amexCard));
-		
-		System.out.println(this.rateOfOperation(naraCard, operation));
+		System.out.println(this.rateOfOperation(operation));
 	}
 	
 	public String infoCard(CreditCard card) {
@@ -62,8 +52,7 @@ public class ChallengeApplication implements CommandLineRunner {
 				"\nBrand card: " + card.getBrand() + "\n\n" + 
 				"Number card: " + card.getNumber() + "\n\n" +
 				"CardHolder: " + card.getCardHolder() + "\n\n" +
-				"Due date: " + card.getDueDate() + "\n\n" +
-				"Consumption: " + card.getConsumption() + "\n\n"
+				"Due date: " + card.getDueDate() + "\n\n"
 				);
 				
 		return infoCard;
@@ -77,9 +66,9 @@ public class ChallengeApplication implements CommandLineRunner {
 		return card.getDueDate().isAfter(LocalDate.now());
 	}
 	
-	public String rateOfOperation(CreditCard card, Operation operation) {
-		return "\nLa tasa de operación es " + card.getRate(LocalDate.now()) * operation.consumption() / 100 + "\n\n" +
-			   "Marca: " + card.getBrand() + "\n\n" + 
+	public String rateOfOperation(Operation operation) {
+		return "\n\nLa tasa de operación es " + operation.rate() + "\n\n" +
+			   "Marca: " + operation.card().getBrand() + "\n\n" + 
 			   "Importe: " + operation.consumption();
 	}
 	
