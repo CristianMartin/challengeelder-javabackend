@@ -14,11 +14,11 @@ import com.challengeeldar.javabackend.challenge.model.VisaCard;
 @SpringBootApplication
 public class ChallengeApplication implements CommandLineRunner {
 	
-	CreditCard card1;
+	public CreditCard card1;
 	
-	CreditCard card2;
+	public CreditCard card2;
 	
-	Operation operation;
+	public Operation operation;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ChallengeApplication.class, args);
