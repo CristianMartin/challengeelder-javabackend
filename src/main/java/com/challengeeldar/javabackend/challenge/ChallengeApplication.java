@@ -32,19 +32,19 @@ public class ChallengeApplication implements CommandLineRunner {
 			
 		this.operation = Operation.builder().withCreditCard(card1).withConsumption(500).build();
 		
-		System.out.println(this.infoCard(card1));
-		
-		System.out.println("\nEs una operacion valida?: " + this.isValidOperation(operation));
-		
-		System.out.println("\nEs una tarjeta valida para operar?: " + this.isValidCard(card2));
-		
-		System.out.println("\nEs una tarjeta valida para operar?: " + this.isValidCard(card1));
-		
-		System.out.println("\nSon tarjetas distintas?: " + this.areDifferentCards(card1, card2));
-		
-		System.out.println("\nSon tarjetas distintas?: " + this.areDifferentCards(card2, card2));
-		
-		System.out.println(this.rateOfOperation(operation));
+//		System.out.println(this.infoCard(card1));
+//		
+//		System.out.println("\nEs una operacion valida?: " + this.isValidOperation(operation));
+//		
+//		System.out.println("\nEs una tarjeta valida para operar?: " + this.isValidCard(card2));
+//		
+//		System.out.println("\nEs una tarjeta valida para operar?: " + this.isValidCard(card1));
+//		
+//		System.out.println("\nSon tarjetas distintas?: " + this.areDifferentCards(card1, card2));
+//		
+//		System.out.println("\nSon tarjetas distintas?: " + this.areDifferentCards(card2, card2));
+//		
+//		System.out.println(this.rateOfOperation(operation));
 	}
 	
 	public String infoCard(CreditCard card) {

@@ -17,7 +17,7 @@ public class OperationController {
 	OperationService service;
 		
 	@GetMapping(value="/getRateOperation", produces = MediaType.APPLICATION_JSON_VALUE)
-	public RateOfOperationDto getUserDTOById() {
+	public RateOfOperationDto getUserDTOById() throws Exception {
 		return this.service.rateOfOperation();
 	}
 }

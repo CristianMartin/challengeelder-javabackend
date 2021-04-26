@@ -2,13 +2,29 @@ package com.challengeeldar.javabackend.challenge.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Operation {
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+	@Column
 	private double consumption;
-	
+	@Column
+	private LocalDate date;
+	@OneToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+	@JoinColumn(name = "card_id")
 	private CreditCard card;
 	
-	private LocalDate date;
+	public Operation() {}
 	
 	private Operation(Builder builder) {
 		this.date = builder.date;
