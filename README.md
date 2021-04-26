@@ -1,6 +1,6 @@
 # challengeelder-javabackend
 
-##Introducción
+## Introducción
 
 Se ha solicitado el diseño de un sistema para procesar operaciones con tarjetas de
 crédito para una organización. Dicho sistema debe disponer de un módulo que permita con las
@@ -25,7 +25,7 @@ tiene un modo de calcular una tasa por el servicio que es desde 0.3% hasta 5%, a
 
 3. Tasa AMEX = mes*0.1 (Ejemplo: 9*0.1)
 
-###Ejercitación
+### Ejercitación
 
 1) Crear una clase ejecutable con 3 objetos que haga lo siguiente:
 
